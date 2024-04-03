@@ -15,6 +15,14 @@ let board = [
   ['','','']
 ];
 
+// display whose turn it is on the screen
+let turn = document.createElement('h3')
+turn.innerHTML = currentMarker + "'s turn"
+turn.style.textAlign = "center"
+turn.style.paddingTop = "10pt"
+document.body.appendChild(turn);
+
+
 // is called when a square is clicked. "this" = element here
 const handleClick = (element) => {
   // check to see if the square clicked has anything in it, if not continue
@@ -46,7 +54,6 @@ const updateBoard = (id) => {
   // @TODO, Your code here: use the above information to change the board variable(array of arrays)
   // HINT: in your browser open up the dev tools -> console
   board[row][column] = currentMarker
-  // changeMarker();
 }
 
 const checkForWin = () => {
@@ -109,7 +116,7 @@ const diagonalWin = () => {
 const changeMarker = () => {
   // ternary operator: if it's an X make it an O, if O make it an X
   currentMarker = currentMarker === "X" ? "O" : "X"
-  document.getElementById("turn").innerHTML = currentMarker + "'s turn"
+  turn.innerHTML = currentMarker + "'s turn"
 }
 
 const resetBoard = () => {
@@ -132,6 +139,7 @@ const resetBoard = () => {
     ['','','']
   ];
   currentMarker = 'X'
+  turn.innerHTML = currentMarker + "'s turn"
 }
 
 // **BONUSES**
